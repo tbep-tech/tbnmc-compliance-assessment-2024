@@ -23,9 +23,9 @@ format:
     theme: cosmo
     css: styles.css
     fontsize: 1.1em
-  pdf:
-    documentclass: scrreport
-    latex-auto-install: true
+  # pdf:
+  #   documentclass: scrreport
+  #   latex-auto-install: true
 
 execute:
   echo: false
