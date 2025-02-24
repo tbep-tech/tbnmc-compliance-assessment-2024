@@ -88,7 +88,7 @@ show_chlboxplot(chldat, params$maxyr, fml)
 #| fig-width: 6
 #| fig-align: center
 #| out-width: "90%"
-show_seagrasscoverage(seagrass, maxyr = 2022, lastlab = 'acres')
+show_seagrasscoverage(seagrass, maxyr = 2024, lastlab = T)
 ```
 
 ```{r}
