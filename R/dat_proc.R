@@ -115,40 +115,28 @@ pinchl2023 <- pinchlraw2 %>%
   st_set_geometry(NULL)
 
 # 2024 BCB
-# from FDEP WIN, via WAVES interface
-# https://prodenv.dep.state.fl.us/DearWin/public/wavesSearchFilter?calledBy=menu
-# org as 21FLPDEM, searched for Boca Ciega Bay
-# activity type as sample, sample-composite, field
-# media as water
-# date range as 2024 Jan 1 to 2024 Dec 31
-# dep analyte name as all chlorophyll analytes
-# as of 12/23/2024, same date range as Water Atlas
+# from Alex Manos via email 2/24/25
+pinchlraw3 <- read_excel(here('data/data-raw/pinchl2024.xlsx'))
 
-pinchlraw3 <- read.table(here('data/data-raw/pinchl2024.txt'), skip = 10, sep = '|', header = T)
-
-pinchl2024 <- pinchlraw3 |> 
-  filter(DEP.Analyte.Name == 'Chlorophyll a- uncorrected') %>% 
+pinchl2024 <- pinchlraw3 %>% 
   select(
-    station = Monitoring.Location.ID, 
-    SampleTime = Activity.Start.Date.Time, 
-    Latitude = Org.Decimal.Latitude, 
-    Longitude = Org.Decimal.Longitude, 
-    chla = DEP.Result.Value.Number, 
-    chla_q = Value.Qualifier
+    station = Site, 
+    SampleTime = Date, 
+    Latitude, 
+    Longitude, 
+    chla = `Chlorophyll a, uncorrected`
   ) %>% 
   mutate(
     bay_segment = 'BCBS',
-    SampleTime = mdy_hms(SampleTime, tz = 'America/Jamaica'), 
+    SampleTime = as.Date(SampleTime), 
     yr = year(SampleTime), 
     mo = month(SampleTime), 
-    Latitude = as.numeric(Latitude), 
-    Longitude = as.numeric(Longitude)
+    chla_q = NA_character_ # no qualifiers for these data
   ) %>% 
   select(bay_segment, station, SampleTime, yr, mo, everything()) %>% 
   st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326, remove = F) %>% 
   .[bcbsseg, ] %>% 
   st_set_geometry(NULL)
-
 
 # Manatee (MR, TCB) ---------------------------------------------------------------------------
 
