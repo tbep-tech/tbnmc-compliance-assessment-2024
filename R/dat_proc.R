@@ -7,7 +7,7 @@ library(readxl)
 
 source(here('R/funcs.R'))
 
-# wq data -----------------------------------------------------------------
+# EPC -----------------------------------------------------------------------------------------
 
 ##
 # epc data
@@ -45,6 +45,8 @@ olddatraw <- rdataload('https://github.com/tbep-tech/reasonable-assurance-analys
 olddat <- olddatraw %>% 
   filter(bay_segment %in% c('BCBS', 'TCB', 'MR')) %>% 
   select(-Level)
+
+# Pinellas (BCBS) -----------------------------------------------------------------------------
 
 ##
 # BCBS 
@@ -147,6 +149,9 @@ pinchl2024 <- pinchlraw3 |>
   .[bcbsseg, ] %>% 
   st_set_geometry(NULL)
 
+
+# Manatee (MR, TCB) ---------------------------------------------------------------------------
+
 ##
 # MR, TCB
 
@@ -158,11 +163,11 @@ pinchl2024 <- pinchlraw3 |>
 # org as 21FLMANA, stations as those below for MR, TCB
 # activity type as sample, sample-composite, field
 # media as water
-# date range as 2022 Jan 1 to 2023 Dec 31
+# analysis date from 2022 Jan 1 to 2023 Dec 31
 # dep analyte name as all chlorophyll analytes
 # according to GB, this is more updated than water atlas, which pulls from WIN
 # manco data goes to win within 1 month at end of each quarter
-manchlraw1 <- read.csv(here('data/data-raw/manchlthrough2023.txt'), sep = '|', skip = 13)
+manchlraw1 <- read.csv(here('data/data-raw/manchlthrough2023.txt'), sep = '|', skip = 10)
 
 MR <- c('431', '433', '434', '532', '535', 'LM4')
 TCB <- c('395', '405', '408', '430')
@@ -203,7 +208,7 @@ manchl20222023 <- manchlraw1 %>%
 # org as 21FLMANA, stations as those below for MR, TCB
 # activity type as sample, sample-composite, field
 # media as water
-# date range as 2024 Jan 1 to 2024 Dec 31
+# analysis date from 2024 Jan 1 to 2024 Dec 31
 # dep analyte name as all chlorophyll analytes
 # according to GB, this is more updated than water atlas, which pulls from WIN
 # manco data goes to win within 1 month at end of each quarter
