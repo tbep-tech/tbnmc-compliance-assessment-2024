@@ -26,6 +26,10 @@ format:
   pdf:
     documentclass: scrreport
     latex-auto-install: true
+    includes:
+      in_header: |
+        \usepackage{fontspec}
+        \usepackage{Lato}
 
 execute:
   echo: false
