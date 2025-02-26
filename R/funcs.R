@@ -37,7 +37,7 @@ headertab <- function(dt = NULL, maxyr ,fsz = 13){
     fontsize(i = 6:10, size = fsz * 0.8461538) %>%
     delete_part('header') %>%
     border_remove() %>%
-    # font(fontname = 'Roboto', part = 'all') %>%
+    font(fontname = 'Arial', part = 'all') %>%
     valign(valign = 'top') %>% 
     color(color = '#636363', part = 'all')
 
@@ -69,7 +69,7 @@ nmcstepstab <- function(fsz = 13){
   )
 
   out <- flextable(totab) %>%
-    # font(fontname = 'Roboto', part = 'all') %>%
+    font(fontname = 'Arial', part = 'all') %>%
     fontsize(size = fsz) %>%
     delete_part('header') %>%
     border_inner() %>%
@@ -106,7 +106,7 @@ nmcactionstab <- function(fsz = 13){
     width(j = 1, 1.5) %>%
     width(j = 2, 5) %>%
     colformat_md() %>%
-    # font(fontname = 'Roboto', part = 'all') %>%
+    font(fontname = 'Arial', part = 'all') %>%
     delete_part('header') %>%
     border_remove() %>%
     valign(valign = 'top') %>%
@@ -143,7 +143,7 @@ hydrotab <- function(maxyr, noaa_key, fsz = 13){
     width(j = 1:4, width = 6.5 / 4) %>%
     bold(part = 'header') %>%
     colformat_double(digits = 2) %>%
-    # font(fontname = 'Roboto', part = 'all') %>%
+    font(fontname = 'Arial', part = 'all') %>%
     valign(valign = 'top', part = 'header') %>%
     fontsize(size = fsz, part = 'all')
 
