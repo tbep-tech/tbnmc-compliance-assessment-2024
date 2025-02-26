@@ -69,7 +69,7 @@ nmcstepstab <- function(fsz = 13){
   )
 
   out <- flextable(totab) %>%
-    font(fontname = 'Lato', part = 'all') %>%
+    font(fontname = 'Roboto', part = 'all') %>%
     fontsize(size = fsz) %>%
     delete_part('header') %>%
     border_inner() %>%
@@ -106,7 +106,7 @@ nmcactionstab <- function(fsz = 13){
     width(j = 1, 1.5) %>%
     width(j = 2, 5) %>%
     colformat_md() %>%
-    font(fontname = 'Lato', part = 'all') %>%
+    font(fontname = 'Roboto', part = 'all') %>%
     delete_part('header') %>%
     border_remove() %>%
     valign(valign = 'top') %>%
@@ -143,7 +143,7 @@ hydrotab <- function(maxyr, noaa_key, fsz = 13){
     width(j = 1:4, width = 6.5 / 4) %>%
     bold(part = 'header') %>%
     colformat_double(digits = 2) %>%
-    font(fontname = 'Lato', part = 'all') %>%
+    font(fontname = 'Roboto', part = 'all') %>%
     valign(valign = 'top', part = 'header') %>%
     fontsize(size = fsz, part = 'all')
 
